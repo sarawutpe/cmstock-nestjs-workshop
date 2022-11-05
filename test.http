@@ -1,0 +1,99 @@
+##### AUTH GROUP #####
+
+### Signup
+POST http://localhost:3000/auth/signup HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "1234@Jwt"
+}
+###
+
+### Signin
+POST http://localhost:3000/auth/signin HTTP/1.1
+content-type: application/json
+
+{
+    "username": "admin",
+    "password": "1234@Jwt"
+}
+###
+
+## Test JWT
+GET http://localhost:3000/auth/test HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3NjQ2NTQyLCJleHAiOjE2Njc2NTE1NDJ9.735N4jmrZYNeljSb7D7SdOXklv60p9kR4GlLKanzGQc
+#
+
+##### STOCK GROUP #####
+
+### Test
+GET http://localhost:3000 HTTP/1.1
+###
+
+### GET Stocks (search ex. ?keyword=p55 )
+GET http://localhost:3000/stock HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6ImFkbWluIiwiaWF0IjoxNjY3NjQ1MjY2LCJleHAiOjE2Njc2NTAyNjZ9.hqzuFW08qog4SWDavTjj_0Dt0_klKU-HOg5o-vwMhhw
+### 
+
+### GET Stock By Id
+GET http://localhost:3000/stock/1 HTTP/1.1
+###
+
+### Create Stock
+POST http://localhost:3000/stock HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name";
+
+p55
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price";
+
+1000
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="stock";
+
+50
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test.jpg"
+Content-Type: image/jpg
+
+< ./test.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+
+### Update Stock
+PUT http://localhost:3000/stock/1 HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="name";
+
+p1
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="price";
+
+111
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="stock";
+
+222
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="file"; filename="test.jpg"
+Content-Type: image/jpg
+
+< ./test.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
+###
+
+### Delete Stock By Id
+DELETE http://localhost:3000/stock/5 HTTP/1.1
+###
